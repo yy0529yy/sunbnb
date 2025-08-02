@@ -1,31 +1,98 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>陽光民宿 Sunbnb</title>
-  <link rel="stylesheet" href="css/style.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>高級民宿網站示範</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; overflow-x: hidden; font-family: "Noto Sans TC", sans-serif;
+  }
+  .slider {
+    display: flex;
+    width: 300vw; /* 三個畫面寬度 */
+    transition: transform 0.5s ease;
+  }
+  section {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  #home {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1280&q=80') center/cover no-repeat;
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3em;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+  #rooms {
+    background: #f9f9f9;
+    color: #333;
+  }
+  #contact {
+    background: #222;
+    color: white;
+  }
+  nav {
+    position: fixed;
+    bottom: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 10;
+  }
+  nav button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    transition: background 0.3s;
+  }
+  nav button:hover {
+    background: #666;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>陽光民宿 Sunbnb</h1>
-    <nav>
-      <a href="index.html">首頁</a>
-      <a href="rooms.html">房型介紹</a>
-      <a href="contact.html">聯絡我們</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h2>放鬆身心的最佳選擇</h2>
-      <p>舒適的環境，溫暖的服務，歡迎預訂！</p>
-      <a class="button" href="rooms.html">查看房型</a>
+<div id="slider-container" style="overflow:hidden;">
+  <div class="slider" id="slider">
+    <section id="home">
+      歡迎來到高級民宿
     </section>
-  </main>
+    <section id="rooms">
+      <h2>精選房型</h2>
+      <ul>
+        <li>豪華雙人房 - 舒適大床，含早餐</li>
+        <li>家庭套房 - 適合4人入住，寬敞客廳</li>
+        <li>海景套房 - 享受絕美海景</li>
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>聯絡我們</h2>
+      <p>Email: contact@sunbnb.com</p>
+      <p>電話: 02-1234-5678</p>
+      <p>地址: 台北市信義區某路123號</p>
+    </section>
+  </div>
+</div>
 
-  <footer>
-    <p>&copy; 2025 陽光民宿 Sunbnb</p>
-  </footer>
+<nav>
+  <button onclick="slideTo(0)">首頁</button>
+  <button onclick="slideTo(1)">房型介紹</button>
+  <button onclick="slideTo(2)">聯絡我們</button>
+</nav>
+
+<script>
+  const slider = document.getElementById('slider');
+  function slideTo(index) {
+    slider.style.transform = `translateX(-${index * 100}vw)`;
+  }
+</script>
+
 </body>
 </html>
+
